@@ -197,3 +197,54 @@ h2 {
         font-size: 1.77rem;
     }
 }
+
+.audio-hub {
+    position: relative;
+    z-index: 1000;
+    text-align: center;
+    margin: 1.25rem auto 0;
+    max-width: 40rem;
+    padding: 0 1rem;
+    font-family: 'Poiret One', 'Oleo Script', cursive;
+}
+
+.audio-hub__title {
+    margin: 0 0 0.65rem;
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+.audio-hub__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.65rem;
+    justify-content: center;
+}
+
+.audio-hub__list a {
+    display: inline-block;
+    color: inherit;
+    text-decoration: none;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    background: rgba(255, 255, 255, 0.12);
+    font-size: 0.95rem;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.audio-hub__list a:hover {
+    background: rgba(255, 255, 255, 0.22);
+    transform: translateY(-1px);
+}
+
+@media(max-width : 480px) {
+    .audio-hub__list a {
+        font-size: 0.85rem;
+    }
+}

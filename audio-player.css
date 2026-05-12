@@ -1,0 +1,133 @@
+/* Audio child pages: centered controls + floating hearts while playing */
+
+.hearts-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 400;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+body.audio-playing .hearts-layer {
+  opacity: 1;
+}
+
+.floating-heart {
+  position: absolute;
+  bottom: -10%;
+  font-size: var(--heart-size, 1.5rem);
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 0 8px rgba(226, 177, 177, 0.9);
+  animation: heart-rise var(--heart-dur, 7s) linear infinite;
+  animation-delay: var(--heart-delay, 0s);
+  left: var(--heart-x, 50%);
+  will-change: transform, opacity;
+}
+
+body:not(.audio-playing) .floating-heart {
+  animation-play-state: paused;
+  opacity: 0;
+}
+
+@keyframes heart-rise {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.95;
+  }
+  92% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate3d(var(--heart-drift, 12px), -120vh, 0) rotate(360deg) scale(0.6);
+    opacity: 0;
+  }
+}
+
+.audio-center {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 6000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  pointer-events: none;
+}
+
+.audio-center .play-btn {
+  pointer-events: auto;
+}
+
+.play-btn {
+  appearance: none;
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  background: linear-gradient(145deg, rgba(226, 177, 177, 0.95), rgba(203, 168, 237, 0.92));
+  color: #fff;
+  width: min(5.5rem, 22vw);
+  height: min(5.5rem, 22vw);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+  box-shadow: 0 8px 28px rgba(29, 25, 52, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-family: 'Poiret One', 'Oleo Script', cursive;
+}
+
+.play-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 32px rgba(29, 25, 52, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+.play-btn:active {
+  transform: scale(0.98);
+}
+
+.play-btn:focus-visible {
+  outline: 3px solid khaki;
+  outline-offset: 4px;
+}
+
+body.audio-playing .play-btn {
+  animation: btn-glow 1.4s ease-in-out infinite alternate;
+}
+
+@keyframes btn-glow {
+  from {
+    box-shadow: 0 8px 24px rgba(226, 177, 177, 0.45);
+  }
+  to {
+    box-shadow: 0 12px 36px rgba(203, 168, 237, 0.65);
+  }
+}
+
+.play-btn__icon {
+  display: block;
+  line-height: 1;
+  font-size: 1.35rem;
+}
+
+.play-btn__label {
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.95;
+}
+
+@media (max-width: 480px) {
+  .play-btn__label {
+    font-size: 0.58rem;
+  }
+}
