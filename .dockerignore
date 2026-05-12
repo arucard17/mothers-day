@@ -1,0 +1,13 @@
+.git
+.gitignore
+.dockerignore
+Dockerfile
+docker-compose.yml
+docker-compose.*.yml
+README.md
+*.md
+style.scss
+style.css.map
+generate-audio-pages.mjs
+audio-page.template.html
+resources.txt
