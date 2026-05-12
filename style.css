@@ -12,16 +12,6 @@ body {
   overflow: hidden;
 }
 
-.dark {
-  position: absolute;
-  width: 100%;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  background: rgba(29, 25, 52, 0.9);
-  z-index: 5000;
-}
-
 h1,
 h2 {
   position: relative;
