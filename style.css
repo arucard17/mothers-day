@@ -1,5 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Oleo+Script);
 @import url(https://fonts.googleapis.com/css?family=Poiret+One);
+html,body {
+  width: 100%;
+  min-height: 100%;
+}
 body {
   background-color: #45b9d3;
   color: white;
